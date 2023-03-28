@@ -17,7 +17,7 @@ class Coloring:
         line = "<div>\n"
         for token_name, token_value in tokens:
             if token_name == "":
-                token_value = "&nbsp"
+                token_value = "&nbsp" * len(token_value)
             line += f"\t<span style=\"color: {self.colors[token_name]}\">{token_value}</span>\n"
         return line
 

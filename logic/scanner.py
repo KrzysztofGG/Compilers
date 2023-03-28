@@ -77,4 +77,5 @@ class Scanner:
                 token_name = self.handle_idf_name(token)
             tokens.append((token_name, token))
 
-        return tokens    
+        return tokens 
+       
