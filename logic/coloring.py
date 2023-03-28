@@ -14,11 +14,11 @@ class Coloring:
         self.output_file = output_file
 
     def create_html_line(self, tokens):
-        line = "<div>\n"
+        line = "<div style=\"font-size: 0;\">\n"
         for token_name, token_value in tokens:
             if token_name == "":
                 token_value = "&nbsp" * len(token_value)
-            line += f"\t<span style=\"color: {self.colors[token_name]}\">{token_value}</span>\n"
+            line += f"\t<span style=\"font-size: 20px; color: {self.colors[token_name]}\">{token_value}</span>\n"
         return line
 
     def create_html(self):
