@@ -1,0 +1,36 @@
+Gramatyka:
+Symobole Nietermninalne{A, B}
+Symbole terminalne{a, b, c} gdzie a, b, c to:
+
+a = "#include "stdio.h"
+int main()
+{
+    char tape[20000] = {0};
+    char *ptr = tape;"
+
+b = ++*ptr;\n
+b = --*ptr;\n
+b = ++ptr;\n
+b = --ptr;\n
+b = *ptr=getchar();\n
+b = putchar(*ptr);\n
+b = while (*ptr) {\n
+b = }\n
+
+c = }
+
+Symbol startowy: A
+
+Przejścia: 
+
+A -> aB
+
+B -> bB
+
+B -> c
+
+
+
+
+
+
