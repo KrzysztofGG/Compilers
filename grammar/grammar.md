@@ -20,9 +20,9 @@ There are a total of 8 non-terminal symbols in the Brainfuck grammar.
 | --- | --- |
 | `<init>` | `<program>` |
 | `<program>` | `<instruction>` \| `<instruction>` `<program>` |
-| `<instruction>` | `<pointerOperation>` <br> \| `<valueOperation>` <br> \| `<readOperation>` <br> \| `<writeOperation>` <br> \| `<loop>` |
-| `<pointerOperation>` | ">" <br> \| "<" |
-| `<valueOperation>` | "+" <br> \| "-" |
+| `<instruction>` | `<pointerOperation>`  \| `<valueOperation>`  \| `<readOperation>`  \| `<writeOperation>`  \| `<loop>` |
+| `<pointerOperation>` | ">"  \| "<" |
+| `<valueOperation>` | "+"  \| "-" |
 | `<readOperation>` | "," |
 | `<writeOperation>` | "." |
 | `<loop>` | "[" `<instruction>` "]" |
