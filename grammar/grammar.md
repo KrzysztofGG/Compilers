@@ -24,4 +24,4 @@
 | `<valueOperation>` | "+"  \| "-" |
 | `<readOperation>` | "," |
 | `<writeOperation>` | "." |
-| `<loop>` | "[" `<instruction>` "]" |
+| `<loop>` | "[" `<program>` "]" |
