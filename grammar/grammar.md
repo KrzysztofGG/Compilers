@@ -13,7 +13,6 @@
 | `<writeOperation>` |
 | `<loop>` | 
 
-There are a total of 8 non-terminal symbols in the Brainfuck grammar.
 
 ### Lista Produkcji:
 | Symbol Nieterminaly | Produkcja |
