@@ -2,7 +2,7 @@
 
 ### Zbiór symboli nieterminalnych:
 
-| Symbol Nieterminalny terminal symbol |
+| Symbol Nieterminalny |
 | --- |
 | `<init>` |
 | `<program>` |
