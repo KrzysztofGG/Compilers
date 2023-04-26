@@ -3,6 +3,7 @@
 ### Zbiór symboli nieterminalnych:
 
 | Symbol Nieterminalny terminal symbol |
+| --- |
 | `<init>` |
 | `<program>` |
 | `<instruction>` |
