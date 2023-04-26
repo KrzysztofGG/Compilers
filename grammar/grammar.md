@@ -19,7 +19,7 @@ There are a total of 8 non-terminal symbols in the Brainfuck grammar.
 | Symbol Nieterminaly | Produkcja |
 | --- | --- |
 | `<init>` | `<program>` |
-| `<program>` | `<instruction>` <br> \| `<instruction>` `<program>` |
+| `<program>` | `<instruction>` | `<instruction>` `<program>` |
 | `<instruction>` | `<pointerOperation>` <br> \| `<valueOperation>` <br> \| `<readOperation>` <br> \| `<writeOperation>` <br> \| `<loop>` |
 | `<pointerOperation>` | ">" <br> \| "<" |
 | `<valueOperation>` | "+" <br> \| "-" |
