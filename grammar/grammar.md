@@ -15,8 +15,8 @@
 
 There are a total of 8 non-terminal symbols in the Brainfuck grammar.
 
-### Produkcja:
-| Non-terminal symbol | Production rule |
+### Lista Produkcji:
+| Symbol Nieterminaly | Produkcja |
 | --- | --- |
 | `<init>` | `<program>` |
 | `<program>` | `<instruction>` <br> \| `<instruction>` `<program>` |
