@@ -12,6 +12,21 @@
 | `<readOperation>` |
 | `<writeOperation>` |
 | `<loop>` | 
+| `<whileLoop>` |
+| `<forLoop>` |
+| `<decisiveBlock>` |
+| `<addSubOperation>` |
+| `<multiDivOperation>` |
+<!-- | `<finalValueOperation>` |
+| `<finalPointerOperation>` | -->
+| `<numberSpecifier>` |
+| `<decisiveBlock>` |
+| `<elifBlock>` |
+| `<elseBlock>` |
+
+
+
+
 
 
 ### Lista Produkcji:
@@ -19,9 +34,23 @@
 | --- | --- |
 | `<init>` | `<program>` |
 | `<program>` | `<instruction>` \| `<instruction>` `<program>` |
-| `<instruction>` | `<pointerOperation>`  \| `<valueOperation>`  \| `<readOperation>`  \| `<writeOperation>`  \| `<loop>` |
-| `<pointerOperation>` | ">"  \| "<" |
-| `<valueOperation>` | "+"  \| "-" |
+| `<instruction>` | `<pointerOperation>`  \| `<valueOperation>`  \| `<readOperation>`  \| `<writeOperation>`  \| `<loop>` \| `<decisiveBlock>` | 
+| `<valueOperation>` | `<addSubOperation>` \| `<multiDivOperation>` |
+| `<addSubOperation>` | `<finalValueOperation>` \| `<finalValueOperation>` `<numberSpecifier>` |
+| `<multiDivOperation>` | `<finalValueOperation>` `<numberSpecifier>` |
+| `<pointerOperation>` | `<finalPointerOperation>` \| `<finalPointerOperation> ` `<numberSpecifier>`|
+| `<loop>` | `<whileLoop>` \| `<forLoop>` |
+| `<whileLoop>` | "[" `<program>` "]" |
+| `<forLoop>` | "&" `<numberSpecifier>` `<block>` |
+| `<block>` | "{" `<program>` "}" | 
+| `<decisiveBlock>` | "?" `<numberSpecifier>` `<block>` `<elifBlock>`* `<elseBlock>`* |
+| `<elifBlock>` | "\|" `<numberSpecifier>` `<block>` `<elifBlock>`* |
+| `<elseBlock>` | ":" `<block>` |
+| `<numberSpecifier>` | "(" `<positiveNumber>` ")" |
+| `<positiveNumber>` | \[1-9\]+ |
+| `<finalValueOperation>` | "+" \| "-" \| "\*" \| "/" |
+| `<finalPointerOperation>` | ">"  \| "<" |
+<!-- | `<valueOperation>` | "+"  \| "-" | -->
 | `<readOperation>` | "," |
 | `<writeOperation>` | "." |
-| `<loop>` | "[" `<program>` "]" |
+<!-- | `<loop>` | "[" `<program>` "]" | -->
