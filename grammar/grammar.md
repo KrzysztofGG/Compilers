@@ -17,8 +17,6 @@
 | `<decisiveBlock>` |
 | `<addSubOperation>` |
 | `<multiDivOperation>` |
-<!-- | `<finalValueOperation>` |
-| `<finalPointerOperation>` | -->
 | `<numberSpecifier>` |
 | `<decisiveBlock>` |
 | `<elifBlock>` |
@@ -50,7 +48,5 @@
 | `<positiveNumber>` | \[1-9\]+ |
 | `<finalValueOperation>` | "+" \| "-" \| "\*" \| "/" |
 | `<finalPointerOperation>` | ">"  \| "<" |
-<!-- | `<valueOperation>` | "+"  \| "-" | -->
 | `<readOperation>` | "," |
 | `<writeOperation>` | "." |
-<!-- | `<loop>` | "[" `<program>` "]" | -->
