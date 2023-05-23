@@ -2,5 +2,6 @@ for(int i=0; i<n; i++){
     double d = 5.0;
 }
 
-"yooo"  12
+"yoo o"  12
 xdx
+
