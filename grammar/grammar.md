@@ -1,4 +1,28 @@
 # Gramatyka
+### Zbiór tokenów
+|Token|
+|---|
+|+|
+|-|
+|<|
+|>|
+|,|
+|.|
+|\*|
+|/|
+|[|
+|]|
+|&|
+|?|
+|\||
+|:|
+|(|
+|)|
+|{|
+|}|
+
+
+
 
 ### Zbiór symboli nieterminalnych:
 
