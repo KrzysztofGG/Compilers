@@ -3,7 +3,6 @@ from bf2Scanner import BF2Scanner
 class BF2Translator:
 
     sc = BF2Scanner()
-    # basic_operators = {'+', '-', '>', '<', '.', ',', '[', ']'}
     skippable = {'{', '}', '(', ')'}
 
     match = {'+': "++*ptr;\n",
@@ -86,7 +85,7 @@ class BF2Translator:
             output += "else if(*ptr == {num})".format(num=self.tokens[index + 2][1])
         elif token_value == ':':
             output += "else"
-        
+    
         self.write_to_file(output)
     
     def handle_braces(self, token_value):
@@ -105,6 +104,7 @@ class BF2Translator:
         output += "for(int i=0; i<{num}; ++i)".format(num=self.tokens[index + 2][1])
 
         self.write_to_file(output)
+
     def write_to_file(self, data):
         with open(self.output_file, 'a') as f:
             f.write(data)
