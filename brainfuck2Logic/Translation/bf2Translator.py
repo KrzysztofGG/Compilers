@@ -1,4 +1,5 @@
-from bf2Scanner import BF2Scanner
+from .bf2Scanner import BF2Scanner
+from grammar.lexer import MyLexer
 
 class BF2Translator:
 
@@ -21,8 +22,11 @@ class BF2Translator:
     def __init__(self, input_file, output_file):
         self.input_file = input_file
         self.output_file = output_file
-        with open(self.input_file, 'r') as f:
-            self.tokens = self.sc.scan(f.read())
+        # with open(self.input_file, 'r') as f:
+            # self.tokens = self.sc.scan(f.read())
+        self.lexer = MyLexer()
+        self.lexer.build()
+        self.tokens = self.lexer.get_tokens(self.input_file)
     
     def translate(self):
 
@@ -30,7 +34,7 @@ class BF2Translator:
             f.write(self.prefix)
 
         for i, (token_name, token_value) in enumerate(self.tokens):
-            if token_value in self.sc.brackets or token_name == "skippable" or token_name == "number":
+            if token_value in self.sc.brackets or token_name == "skippable" or token_name.lower() == "number":
                 continue
             
             if token_value in self.sc.basic_operators:

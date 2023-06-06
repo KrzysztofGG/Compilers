@@ -62,6 +62,12 @@ class MyLexer(object):
 
     def build(self, **kwargs):
         self.lexer = lex.lex(module=self, **kwargs)
+
+    def get_tokens(self, input_file):
+        f = open(input_file, "r")
+        self.lexer.input(f.read())
+        tokens = [(token.type, token.value) for token in self.lexer]
+        return tokens
     
     def test(self, data):
         self.lexer.input(data)
@@ -77,7 +83,7 @@ class MyLexer(object):
         for token in self.lexer:
             print(f"{token.type}({token.value})")
 
-m = MyLexer()
-m.build()
-m.test_file(os.path.join(os.getcwd(), "grammar", "test.txt"))
+# m = MyLexer()
+# m.build()
+# m.test_file(os.path.join(os.getcwd(), "grammar", "test.txt"))
 
