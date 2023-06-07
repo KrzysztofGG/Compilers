@@ -2,15 +2,6 @@ import PySimpleGUI as sg
 from Translation.bf2Translator import BF2Translator
 import os
 
-# path = os.path.realpath(__file__)
-# dir = os.path.dirname(path)
-# dir = dir.replace("brainfuck2_logic", "resources")
-
-# os.chdir(dir)
-
-
-
-
 
 def main():
     layout = [
@@ -18,16 +9,18 @@ def main():
             sg.Text("Translate your Brainfuck2 code to C!")
         ],
         [
-            sg.Text("Choose a file"),
+            sg.Text("Input file:", size=(8, 1)),
             sg.In(enable_events=True, key="-INPUT-"),
-            sg.FileBrowse(),
+            sg.FileBrowse(size=(8, 1)),
         ],
         [
-            sg.Text("Output File:"),
+            sg.Text("Output File:", size=(8, 1)),
             sg.In(enable_events=True, key="-OUTPUT-"),
+            # sg.FileBrowse(),
+            sg.FileSaveAs(enable_events=True, key="-OUTPUT-", size=(8, 1)),
         ],
         [
-            sg.Button("Submit", key="-SUBMIT-")
+            sg.Button("Submit", key="-SUBMIT-", size=(8, 1))
         ]
     ]
 
@@ -36,10 +29,12 @@ def main():
         event, values = window.read()
 
         if event == "-SUBMIT-":
-            if values["-INPUT-"] == "":
+            if values["-INPUT-"] == "" or not os.path.exists(values["-INPUT-"]):
                 sg.popup("Invalid input file")
             elif values["-OUTPUT-"] == "":
                 sg.popup("Invalid output file")
+            elif values["-OUTPUT-"][-1] != 'c':
+                sg.popup("Output file has to be .c")
             else:
                 tr = BF2Translator(values["-INPUT-"], values["-OUTPUT-"])
                 tr.translate()
