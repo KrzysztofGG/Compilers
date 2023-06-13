@@ -1,16 +1,1 @@
-    ?(5)
-    {
-        &1
-        {
-            *(        # mnożenie
-                >(     # inkrementuj wskaźnik
-                    -     # odejmowanie
-                )
-                |
-                &1
-                {
-                    .     # wyświetl wynik
-                }
-            )
-        }
-    }
+>?(5){&1{*(>(-)|&1{.})}}
