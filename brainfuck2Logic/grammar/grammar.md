@@ -1,26 +1,26 @@
 # Gramatyka
 ### Zbiór tokenów
-|Token|
-|---|
-|+|
-|-|
-|<|
-|>|
-|,|
-|.|
-|\*|
-|/|
-|[|
-|]|
-|&|
-|?|
-|\||
-|:|
-|(|
-|)|
-|{|
-|}|
-|[1-9]+|
+|Token|Nazwa|
+|---|---|
+|+|ADD_1|
+|-|MINUS_1|
+|<|MOVE_LEFT|
+|>|MOVE_RIGHT|
+|,|EXTRACT|
+|.|SHOW|
+|\*|MULTIPLY|
+|/|DIVIDE|
+|[|WHILE_BEGIN|
+|]|WHILE_END|
+|&|FOR_LOOP|
+|?|IF|
+|\||ELIF|
+|:|ELSE|
+|(|LPAREN|
+|)|RPAREN|
+|{|LBRACKET|
+|}|RBRACKET|
+|[1-9]+|NUMBER|
 
 
 
