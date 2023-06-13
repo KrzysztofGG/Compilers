@@ -1,0 +1,33 @@
+>
+    ?(17)          # Sprawdzamy, czy liczba 17 jest pierwsza
+    {
+        ?(2)       # Inicjalizacja zmiennej pomocniczej
+        {
+            &0     # Ustalamy flagę na 0 (nie jest pierwsza)
+            ?(       # Sprawdzamy, czy liczba jest podzielna przez jakąś inną liczbę niż 1 i sama siebie
+                |      # Wykonuj pętlę dopóki liczba nie jest podzielna przez zmienną pomocniczą
+                |(     # Jeśli liczba podzielna, ustaw flagę na 1
+                    *    # Mnożenie
+                )
+                &2
+            )
+            {
+                &1    # Ustaw flagę na 1 (jest pierwsza)
+            }
+        }
+        &1
+        {
+            ?(      # Sprawdzamy wartość flagi
+                &(   # Jeśli 0, wyświetlamy informację, że liczba nie jest pierwsza
+                    {
+                        :   # Odpowiedź negatywna
+                    }
+                )
+                &(   # Jeśli 1, wyświetlamy informację, że liczba jest pierwsza
+                    {
+                        :   # Odpowiedź pozytywna
+                    }
+                )
+            )
+        }
+    }
