@@ -1,4 +1,4 @@
-from scanner import Scanner
+from FileColoring.scanner import Scanner
 
 class Coloring:
     sc = Scanner()
