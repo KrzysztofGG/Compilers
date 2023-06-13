@@ -24,10 +24,12 @@ def main():
         [
             sg.Button("Submit", key="-SUBMIT-", size=(8, 1)),
             sg.VSeparator(),
+            sg.Text("Or"),
             sg.Button("File Coloring", key="-SWAP-")
         ]
     ]
-    window = sg.Window("Bf2C", layout)
+
+    window = sg.Window("Brainfuck2GUI", layout)
     is_coloring = False    
 
     def edit_window( is_coloring):
@@ -65,20 +67,18 @@ def main():
             is_coloring = edit_window(is_coloring)
             
         if event == "-SUBMIT-":
-            if values["-INPUT-"] == "" or not os.path.exists(values["-INPUT-"]):
+            if not values["-INPUT-"]  or not os.path.exists(values["-INPUT-"]):
                 sg.popup("Invalid input file", title="Error")
             elif values["-OUTPUT-"] == "":
                 sg.popup("Invalid output file", title="Error")
-
-            if is_coloring:
-                handle_coloring()
             else:
-                handle_translation()
-            window["-INPUT-"].update('')
-            window["-OUTPUT-"].update('')
-            
-                
-
+                if is_coloring:
+                    handle_coloring()
+                else:
+                    handle_translation()
+                window["-INPUT-"].update('')
+                window["-OUTPUT-"].update('')
+             
         if event == "Exit" or event == sg.WIN_CLOSED:
             break
     window.close()
