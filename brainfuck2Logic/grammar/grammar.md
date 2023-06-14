@@ -70,8 +70,8 @@
 | `<elifBlock>` | "\|" `<numberSpecifier>` `<block>` `<elifBlock>`* |
 | `<elseBlock>` | ":" `<block>` |
 | `<numberSpecifier>` | "(" `<positiveNumber>` ")" |
-| `<positiveNumber>` | \[1-9\]+ |
+<!-- | `<positiveNumber>` | \[1-9\]+ |
 | `<finalValueOperation>` | "+" \| "-" \| "\*" \| "/" |
 | `<finalPointerOperation>` | ">"  \| "<" |
 | `<readOperation>` | "," |
-| `<writeOperation>` | "." |
+| `<writeOperation>` | "." | -->
