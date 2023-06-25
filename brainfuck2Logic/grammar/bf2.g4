@@ -1,12 +1,11 @@
 grammar bf2;
 
 program
-    : instruction | instruction program
+    : instruction | program instruction 
     ;
     
-
-INSTRUCTION
-    :  pointerOperation  | valueOperation  | readOperation  | writeOperation  | loop | decisiveBlock | 
+instruction
+    :  pointerOperation  | valueOperation  | readOperation  | writeOperation  | loop | decisiveBlock 
     ;
 valueOperation
     : addSubOperation | multiDivOperation
@@ -29,50 +28,50 @@ loop
     ;
 
 whileLoop
-    : "[" program "]"
+    : '[' program ']'
     ;
 
 forLoop
-    : "&" numberSpecifier block
+    : '&' numberSpecifier block
     ;
 
 block
-    : "{" program "}"
+    : '{' program '}'
     ;
 
 decisiveBlock
-    : "?" numberSpecifier block elifBlock* elseBlock*
+    : '?' numberSpecifier block elifBlock* elseBlock*
     ;
 
 elifBlock
-    : "|" numberSpecifier block elifBlock*
+    : '|' numberSpecifier block elifBlock*
     ;
 
 elseBlock
-    : ":" block
+    : ':' block
     ;
     
 numberSpecifier
-    ; "(" positiveNumber ")"
+    : '(' PositiveNumber ')'
     ;
 
-positiveNumber
+PositiveNumber
     : [1-9]+
     ;
 
 finalValueOperation
-    : "+" | "-" | "*" | "/"
+    : '+' | '-' | '*' | '/'
     ;
 
 finalPointerOperation
-    : ">" | "<"
+    : '>' | '<'
     ;
     
 readOperation
-    : ","
+    : ','
     ;
 
 writeOperation
-   : 
-    "."
+   : '.'
     ;
+
