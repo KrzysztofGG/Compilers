@@ -1,6 +1,10 @@
 import PySimpleGUI as sg
-from Translation.bf2Translator import BF2Translator
 from FileColoring.coloring import Coloring
+from antlr4 import *
+from grammar.dist.bf2Lexer import bf2Lexer
+from grammar.dist.bf2Parser import bf2Parser
+from grammar.dist.bf2Visitor import bf2Visitor
+from grammar.errorListener import ThrowingErrorListener
 import os
 
 
@@ -43,14 +47,39 @@ def main():
             is_coloring = True
 
         return is_coloring
+    
+    def translation_process():
+        try:
+            f = open(values["-INPUT-"], 'r')
+            inputStream = InputStream(f.read())
+            lexer = bf2Lexer(inputStream)
+            lexer.removeErrorListener(lexer._listeners[0])
+            lexer.addErrorListener(ThrowingErrorListener())
+
+            stream = CommonTokenStream(lexer)
+            parser = bf2Parser(stream)
+            parser.removeErrorListener(parser._listeners[0])
+            parser.addErrorListener(ThrowingErrorListener())
+
+            context = parser.program()
+            visitor = bf2Visitor()
+            visitor.visit(context)
+            visitor.generateFile(values["-OUTPUT-"])
+            sg.popup(f"File {values['-OUTPUT-']} succesfully created", title="Success")
+        except Exception as e:
+            print(e)
+            sg.popup(e, title="Error")
+
+        
 
     def handle_translation():
         if values["-OUTPUT-"][-1] != 'c':
             sg.popup("Output file has to be .c", title="Error")
         else:
-            tr = BF2Translator(values["-INPUT-"], values["-OUTPUT-"])
-            tr.translate()
-            sg.popup(f"File {values['-OUTPUT-']} succesfully created", title="Success")
+            # tr = BF2Translator(values["-INPUT-"], values["-OUTPUT-"])
+            # tr.translate()
+            translation_process()
+            
     
     def handle_coloring():
         if not values["-OUTPUT-"].endswith("html"):

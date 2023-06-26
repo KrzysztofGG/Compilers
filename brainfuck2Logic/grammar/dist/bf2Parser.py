@@ -153,6 +153,12 @@ class bf2Parser ( Parser ):
             if hasattr( listener, "exitProgram" ):
                 listener.exitProgram(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitProgram" ):
+                return visitor.visitProgram(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
     def program(self, _p:int=0):
@@ -238,6 +244,12 @@ class bf2Parser ( Parser ):
             if hasattr( listener, "exitInstruction" ):
                 listener.exitInstruction(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitInstruction" ):
+                return visitor.visitInstruction(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -317,6 +329,12 @@ class bf2Parser ( Parser ):
             if hasattr( listener, "exitValueOperation" ):
                 listener.exitValueOperation(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitValueOperation" ):
+                return visitor.visitValueOperation(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -375,6 +393,12 @@ class bf2Parser ( Parser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitAddSubOperation" ):
                 listener.exitAddSubOperation(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAddSubOperation" ):
+                return visitor.visitAddSubOperation(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -437,6 +461,12 @@ class bf2Parser ( Parser ):
             if hasattr( listener, "exitMultiDivOperation" ):
                 listener.exitMultiDivOperation(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitMultiDivOperation" ):
+                return visitor.visitMultiDivOperation(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -484,6 +514,12 @@ class bf2Parser ( Parser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitPointerOperation" ):
                 listener.exitPointerOperation(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPointerOperation" ):
+                return visitor.visitPointerOperation(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -546,6 +582,12 @@ class bf2Parser ( Parser ):
             if hasattr( listener, "exitLoop" ):
                 listener.exitLoop(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLoop" ):
+                return visitor.visitLoop(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -601,6 +643,12 @@ class bf2Parser ( Parser ):
             if hasattr( listener, "exitWhileLoop" ):
                 listener.exitWhileLoop(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitWhileLoop" ):
+                return visitor.visitWhileLoop(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -651,6 +699,12 @@ class bf2Parser ( Parser ):
             if hasattr( listener, "exitForLoop" ):
                 listener.exitForLoop(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitForLoop" ):
+                return visitor.visitForLoop(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -696,6 +750,12 @@ class bf2Parser ( Parser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitBlock" ):
                 listener.exitBlock(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBlock" ):
+                return visitor.visitBlock(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -760,6 +820,12 @@ class bf2Parser ( Parser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitDecisiveBlock" ):
                 listener.exitDecisiveBlock(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitDecisiveBlock" ):
+                return visitor.visitDecisiveBlock(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -840,6 +906,12 @@ class bf2Parser ( Parser ):
             if hasattr( listener, "exitElifBlock" ):
                 listener.exitElifBlock(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitElifBlock" ):
+                return visitor.visitElifBlock(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -897,6 +969,12 @@ class bf2Parser ( Parser ):
             if hasattr( listener, "exitElseBlock" ):
                 listener.exitElseBlock(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitElseBlock" ):
+                return visitor.visitElseBlock(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -940,6 +1018,12 @@ class bf2Parser ( Parser ):
             if hasattr( listener, "exitNumberSpecifier" ):
                 listener.exitNumberSpecifier(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitNumberSpecifier" ):
+                return visitor.visitNumberSpecifier(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -982,6 +1066,12 @@ class bf2Parser ( Parser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitFinalValueOperation" ):
                 listener.exitFinalValueOperation(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFinalValueOperation" ):
+                return visitor.visitFinalValueOperation(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1028,6 +1118,12 @@ class bf2Parser ( Parser ):
             if hasattr( listener, "exitFinalPointerOperation" ):
                 listener.exitFinalPointerOperation(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFinalPointerOperation" ):
+                return visitor.visitFinalPointerOperation(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -1073,6 +1169,12 @@ class bf2Parser ( Parser ):
             if hasattr( listener, "exitReadOperation" ):
                 listener.exitReadOperation(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitReadOperation" ):
+                return visitor.visitReadOperation(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -1111,6 +1213,12 @@ class bf2Parser ( Parser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitWriteOperation" ):
                 listener.exitWriteOperation(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitWriteOperation" ):
+                return visitor.visitWriteOperation(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
