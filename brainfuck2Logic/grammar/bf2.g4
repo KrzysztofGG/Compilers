@@ -75,3 +75,5 @@ writeOperation
    : '.'
     ;
 
+WS: [ \t\r\n]+ -> skip;
+

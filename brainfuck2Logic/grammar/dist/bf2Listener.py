@@ -8,15 +8,6 @@ else:
 # This class defines a complete listener for a parse tree produced by bf2Parser.
 class bf2Listener(ParseTreeListener):
 
-    def __init__(self):
-        self.command = ""
-        self.code = ""
-        self.specifier_present = False
-        self.is_for = False
-        self.is_if = False
-        self.is_elif = False
-        
-
     # Enter a parse tree produced by bf2Parser#program.
     def enterProgram(self, ctx:bf2Parser.ProgramContext):
         pass
@@ -46,9 +37,6 @@ class bf2Listener(ParseTreeListener):
 
     # Enter a parse tree produced by bf2Parser#addSubOperation.
     def enterAddSubOperation(self, ctx:bf2Parser.AddSubOperationContext):
-
-        if ctx.getChildCount() > 1:
-            self.specifier_present = True
         pass
 
     # Exit a parse tree produced by bf2Parser#addSubOperation.
@@ -58,8 +46,6 @@ class bf2Listener(ParseTreeListener):
 
     # Enter a parse tree produced by bf2Parser#multiDivOperation.
     def enterMultiDivOperation(self, ctx:bf2Parser.MultiDivOperationContext):
-
-        self.specifier_present = True
         pass
 
     # Exit a parse tree produced by bf2Parser#multiDivOperation.
@@ -69,9 +55,6 @@ class bf2Listener(ParseTreeListener):
 
     # Enter a parse tree produced by bf2Parser#pointerOperation.
     def enterPointerOperation(self, ctx:bf2Parser.PointerOperationContext):
-
-        if ctx.getChildCount() > 1:
-            self.specifier_present = True
         pass
 
     # Exit a parse tree produced by bf2Parser#pointerOperation.
@@ -90,21 +73,15 @@ class bf2Listener(ParseTreeListener):
 
     # Enter a parse tree produced by bf2Parser#whileLoop.
     def enterWhileLoop(self, ctx:bf2Parser.WhileLoopContext):
-
-        self.code += "while(*ptr){\n"
         pass
 
     # Exit a parse tree produced by bf2Parser#whileLoop.
     def exitWhileLoop(self, ctx:bf2Parser.WhileLoopContext):
-
-        self.code += "}\n"
         pass
 
 
     # Enter a parse tree produced by bf2Parser#forLoop.
     def enterForLoop(self, ctx:bf2Parser.ForLoopContext):
-
-        self.is_for = True
         pass
 
     # Exit a parse tree produced by bf2Parser#forLoop.
@@ -114,21 +91,15 @@ class bf2Listener(ParseTreeListener):
 
     # Enter a parse tree produced by bf2Parser#block.
     def enterBlock(self, ctx:bf2Parser.BlockContext):
-
-        self.code += "{\n"
         pass
 
     # Exit a parse tree produced by bf2Parser#block.
     def exitBlock(self, ctx:bf2Parser.BlockContext):
-        
-        self.code += "}\n"
         pass
 
 
     # Enter a parse tree produced by bf2Parser#decisiveBlock.
     def enterDecisiveBlock(self, ctx:bf2Parser.DecisiveBlockContext):
-
-        self.is_if = True
         pass
 
     # Exit a parse tree produced by bf2Parser#decisiveBlock.
@@ -138,8 +109,6 @@ class bf2Listener(ParseTreeListener):
 
     # Enter a parse tree produced by bf2Parser#elifBlock.
     def enterElifBlock(self, ctx:bf2Parser.ElifBlockContext):
-
-        self.is_elif = True
         pass
 
     # Exit a parse tree produced by bf2Parser#elifBlock.
@@ -149,8 +118,6 @@ class bf2Listener(ParseTreeListener):
 
     # Enter a parse tree produced by bf2Parser#elseBlock.
     def enterElseBlock(self, ctx:bf2Parser.ElseBlockContext):
-
-        self.code += "else"
         pass
 
     # Exit a parse tree produced by bf2Parser#elseBlock.
@@ -160,20 +127,7 @@ class bf2Listener(ParseTreeListener):
 
     # Enter a parse tree produced by bf2Parser#numberSpecifier.
     def enterNumberSpecifier(self, ctx:bf2Parser.NumberSpecifierContext):
-
-        if self.command != "":
-            line = self.command + ctx.PositiveNumber() + ";\n"
-            self.command = ""
-        if self.is_for:
-            line = "for(int i=0; i<{num}; ++i)".format(num=ctx.PositiveNumber())
-        elif self.is_if:
-            line = "if(*ptr == {num})".format(num=ctx.PositiveNumber())
-        elif self.is_elif:
-            line = "else if(*ptr == {num})".format(num=ctx.PositiveNumber())
-
-        self.code += line
-
-        # pass
+        pass
 
     # Exit a parse tree produced by bf2Parser#numberSpecifier.
     def exitNumberSpecifier(self, ctx:bf2Parser.NumberSpecifierContext):
@@ -182,34 +136,15 @@ class bf2Listener(ParseTreeListener):
 
     # Enter a parse tree produced by bf2Parser#finalValueOperation.
     def enterFinalValueOperation(self, ctx:bf2Parser.FinalValueOperationContext):
-
-        if self.specifier_present:
-            self.command = f"*ptr {ctx.getText()}= "
-            self.specifier_present = False
-        else:
-            self.code += f"*ptr {ctx.getText()}= 1;\n"
         pass
 
     # Exit a parse tree produced by bf2Parser#finalValueOperation.
     def exitFinalValueOperation(self, ctx:bf2Parser.FinalValueOperationContext):
-
         pass
 
 
     # Enter a parse tree produced by bf2Parser#finalPointerOperation.
     def enterFinalPointerOperation(self, ctx:bf2Parser.FinalPointerOperationContext):
-
-        operation = ""
-        if ctx.getText() == "<":
-            operation = "-"
-        elif ctx.getText() == ">":
-            operation = "+"
-
-        if self.specifier_present:
-            self.command = f"ptr {operation}= "
-            self.specifier_present = False
-        else:
-            self.code += f"ptr {operation}= 1;\n"
         pass
 
     # Exit a parse tree produced by bf2Parser#finalPointerOperation.
@@ -219,8 +154,6 @@ class bf2Listener(ParseTreeListener):
 
     # Enter a parse tree produced by bf2Parser#readOperation.
     def enterReadOperation(self, ctx:bf2Parser.ReadOperationContext):
-
-        self.code += "*ptr = getchar();\n"
         pass
 
     # Exit a parse tree produced by bf2Parser#readOperation.
@@ -230,23 +163,12 @@ class bf2Listener(ParseTreeListener):
 
     # Enter a parse tree produced by bf2Parser#writeOperation.
     def enterWriteOperation(self, ctx:bf2Parser.WriteOperationContext):
-
-        self.code += "putchar(*ptr);\n"
         pass
 
     # Exit a parse tree produced by bf2Parser#writeOperation.
     def exitWriteOperation(self, ctx:bf2Parser.WriteOperationContext):
         pass
 
-    def generateFile(self, output_file):
-        prefix = "#include \"stdio.h\"\n\nint main(){\n\tchar tape[20000] = {0};\n\tchar *ptr = tape;\n"
-        data = prefix + self.code + "\n\treturn 0;\n}"
-        with open(output_file, "w") as f:
-            f.write(data)
-
 
 
 del bf2Parser
-
-
-
