@@ -1,10 +1,10 @@
 import PySimpleGUI as sg
 from FileColoring.coloring import Coloring
 from antlr4 import *
-from grammar.dist.bf2Lexer import bf2Lexer
-from grammar.dist.bf2Parser import bf2Parser
-from grammar.dist.bf2Visitor import bf2Visitor
-from grammar.errorListener import ThrowingErrorListener
+from Grammar.dist.bf2Lexer import bf2Lexer
+from Grammar.dist.bf2Parser import bf2Parser
+from Grammar.dist.bf2Visitor import bf2Visitor
+from Grammar.errorListener import ThrowingErrorListener
 import os
 
 
